@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix Clone - Výběr filmů</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/movie.css" />
+  </head>
+  <body>
+
+    <!-- ========================================== -->
+    <!-- HLAVIČKA STRÁNKY (HEADER)                  -->
+    <!-- ========================================== -->
+    <header>
+      <a href="index.html" class="logo" aria-label="Domů"></a>
+      <a href="index.html" class="btn-netflix">Hlavní stránka</a>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- HLAVNÍ OBSAH STRÁNKY (MAIN)                -->
+    <!-- ========================================== -->
+    <main>
+      <h2>Vyhledejte si svůj oblíbený film</h2>
+
+      <!-- --- Sekce pro filtrování filmů --- -->
+      <div class="filter-section">
+        <label for="movie-filter">Vyberte téma:</label>
+        <select id="movie-filter">
+          <option value="" disabled selected>Vyberte...</option>
+          <option value="girl">Dívka (Girl)</option>
+          <option value="boy">Chlapec (Boy)</option>
+          <option value="love">Láska (Love)</option>
+          <option value="batman">Batman</option>
+          <option value="superman">Superman</option>
+          <option value="zombie">Zombie</option>
+          <option value="star">Vesmír (Star)</option>
+          <option value="dog">Pes (Dog)</option>
+          <option value="war">Válka (War)</option>
+          <option value="magic">Magie (Magic)</option>
+        </select>
+      </div>
+
+      <!-- --- Galerie výsledků (karty filmů) --- -->
+      <section id="movie-gallery" class="gallery-grid"></section>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- SCRIPTY A DODATEČNÉ ELEMENTY               -->
+    <!-- ========================================== -->
+    <img
+      src="icons/circle-up-solid-full.svg"
+      class="scroll-up-btn"
+      alt="Zpět nahoru"
+    />
+    <script type="module" src="scripts/main.js"></script>
+  </body>
+</html>

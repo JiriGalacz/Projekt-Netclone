@@ -1,0 +1,136 @@
+/* ==========================================================================
+   FORM.CSS
+   Styly pro registrační stránku a formuláře.
+   ========================================================================== */
+
+/* --- 1. ZÁKLADNÍ ROZLOŽENÍ (Base) --- */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 20px;
+}
+
+main h2 {
+  margin-top: 100px;
+  margin-bottom: 25px;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+/* --- 2. OBAL FORMULÁŘE (Form Container) --- */
+/* Samotný box formuláře */
+#registration-form {
+  background-color: var(--overlay-dark); /* Tmavý průhledný box */
+  padding: 40px 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px; /* Aby nebyl na PC přes celou obrazovku */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#registration-form button {
+  padding: 15px; /* Specifické pro tento formulář */
+  margin-top: 10px;
+}
+
+/* --- 3. INPUTY A LABELY (Form Inputs) --- */
+/* Obal pro label a input */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Políčka pro psaní */
+.input-group input {
+  background-color: var(--surface-medium);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 4px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  outline: none; /* Skryje výchozí modrý rámeček prohlížeče */
+  transition:
+    background-color 0.3s ease,
+    outline 0.3s ease;
+}
+
+/* Efekt po kliknutí do políčka (focus) */
+.input-group input:focus {
+  background-color: var(--surface-light);
+  outline: 2px solid var(--netflix-red);
+}
+
+.input-group .form-help {
+  font-size: 0.7rem;
+  color: var(--text-help);
+}
+
+
+/* --- 4. STAVOVÉ TŘÍDY A VALIDACE (Validation States) --- */
+/* Stylování chybového textu */
+.error-text {
+  color: var(--netflix-red);
+  font-size: 0.85rem;
+  margin-top: -3px;
+  font-weight: bold;
+}
+
+/* Třída pro skrytí elementu */
+.hidden {
+  display: none;
+}
+
+/* Třída, kterou přidáme políčku přes JS, když je v něm chyba */
+.input-error {
+  border: 2px solid var(--netflix-red) !important;
+  background-color: var(--bg-error-light) !important;
+}
+
+/* Třída pro zprávu o úspěchu (tu vytvoříme přes TypeScript) */
+.success-message {
+  color: var(--color-success);
+  background-color: var(--bg-success-light);
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 1.2rem;
+  border: 1px solid var(--color-success);
+}
+
+/* Políčko je správně vyplněné (a uživatel do něj už něco napsal) */
+.input-group input:not(:placeholder-shown):valid {
+  outline: 2px solid var(--color-success) !important;
+}
+
+/* Políčko je vyplněné špatně (a uživatel do něj už něco napsal) */
+.input-group input:not(:placeholder-shown):invalid {
+  outline: 2px solid var(--netflix-red) !important;
+}
+
+/* --- 5. MEDIA QUERIES --- */
+/* ==========================================================================
+   TABLET (min-width: 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+  #registration-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 700px; /* Zvětšíme max. šířku, aby se 2 sloupce hezky vešly */
+    align-items: start;
+  }
+
+  /* Tlačítko pro registraci chceme roztáhnout přes oba sloupce (úplně dolů) */
+  #registration-form button {
+    grid-column: 1 / -1;
+    margin-top: 15px;
+  }
+}
