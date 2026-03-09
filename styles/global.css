@@ -57,7 +57,7 @@ main {
 }
 
 /* --- 3. GLOBÁLNÍ KOMPONENTY (Components) --- */
-.btn-netflix {
+.btn-flix {
   background-color: var(--netflix-red);
   color: var(--text-primary);
   padding: 8px 16px;
@@ -75,13 +75,13 @@ main {
     transform 0.2s ease;
 }
 
-.btn-netflix:hover {
+.btn-flix:hover {
   background-color: var(--netflix-red-hover);
   color: var(--text-primary);
   transform: scale(1.05); /* Jemné zvětšení pro interaktivitu */
 }
 
-.btn-netflix:active {
+.btn-flix:active {
   transform: scale(0.98);
 }
 
@@ -116,7 +116,7 @@ main {
    TABLET (min-width: 768px)
    ========================================================================== */
 @media (min-width: 768px) {
-  .btn-netflix {
+  .btn-flix {
     font-size: 1.2rem;
     padding: 10px 20px;
   }
