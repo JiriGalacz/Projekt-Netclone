@@ -45,6 +45,65 @@ main h2 {
   box-shadow: 0 0 0 2px rgba(var(--netflix-red-rgb), 0.3);
 }
 
+/* Stylování samotné roletky */
+#movie-filter {
+  background-color: var(--overlay-dark);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+  outline: none;
+  width: 100%;
+  max-width: 300px;
+  appearance: none; /* Skryje výchozí šipku prohlížeče (přidáme vlastní přes background) */
+
+  /* Přidání vlastní "Netflix" šipky vpravo */
+  background-image: url("../icons/down-long-solid-full.svg");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 15px;
+}
+
+/* Sjednocení barvy pro placeholder v textovém poli */
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Efekt placeholderu pro roletku (když je vybráno "Vyberte...") */
+#movie-filter:invalid {
+  color: var(--text-muted);
+}
+
+/* Efekt po najetí myší na roletku */
+#movie-filter:hover {
+  background-color: var(--surface-light);
+}
+
+/* Efekt po rozkliknutí roletky (focus) */
+#movie-filter:focus {
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 0 2px rgba(var(--netflix-red-rgb), 0.3);
+}
+
+/* Změna barvy pro jednotlivé <option> položky (aby nebyly na Windows bílé) */
+#movie-filter option {
+  background-color: var(--surface-dark);
+  color: var(--text-primary);
+}
+
+.loading-text {
+  grid-column: 1 / -1; /* Roztáhne text načítání přes celou šířku gridu */
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--netflix-red);
+}
+
 /* --- 3. DODATEČNÉ STYLY PRO KARTY --- */
 /* Kontejner pro hodnocení v kartě filmu */
 .movie-rating {
@@ -64,15 +123,6 @@ main h2 {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-}
-
-/* Responzivita pro tablety a PC */
-@media (min-width: 768px) {
-  .filter-section {
-    flex-direction: row; /* Vyhledávání a roletka vedle sebe */
-    justify-content: center;
-    gap: 30px;
-  }
 }
 
 /* Styly pro dynamicky vytvořené karty filmů z TypeScriptu */
@@ -110,54 +160,7 @@ main h2 {
   margin-top: auto; /* Zarovná název vždy hezky dolů */
 }
 
-/* Stylování samotné roletky */
-#movie-filter {
-  background-color: var(--overlay-dark);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    background-color 0.3s ease;
-  outline: none;
-  width: 100%;
-  max-width: 300px;
-  appearance: none; /* Skryje výchozí šipku prohlížeče (přidáme vlastní přes background) */
 
-  /* Přidání vlastní "Netflix" šipky vpravo */
-  background-image: url("../icons/down-long-solid-full.svg");
-  background-repeat: no-repeat;
-  background-position: right 15px center;
-  background-size: 15px;
-}
-
-/* Efekt po najetí myší na roletku */
-#movie-filter:hover {
-  background-color: var(--surface-light);
-}
-
-/* Efekt po rozkliknutí roletky (focus) */
-#movie-filter:focus {
-  border-color: var(--netflix-red);
-  box-shadow: 0 0 0 2px rgba(var(--netflix-red-rgb), 0.3);
-}
-
-/* Změna barvy pro jednotlivé <option> položky (aby nebyly na Windows bílé) */
-#movie-filter option {
-  background-color: var(--surface-dark);
-  color: var(--text-primary);
-}
-
-.loading-text {
-  grid-column: 1 / -1; /* Roztáhne text načítání přes celou šířku gridu */
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--netflix-red);
-}
 
 /* --- 4. MEDIA QUERIES --- */
 /* ==========================================================================
@@ -165,8 +168,9 @@ main h2 {
    ========================================================================== */
 @media (min-width: 768px) {
   .filter-section {
-    flex-direction: row; /* Vedle sebe na tabletu/PC */
-    align-items: center;
+    flex-direction: row; /* Vyhledávání a roletka vedle sebe */
+    justify-content: center;
+    gap: 30px;
   }
   main h2 {
     font-size: 2.5rem;
